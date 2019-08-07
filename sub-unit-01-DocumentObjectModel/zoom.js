@@ -2,8 +2,8 @@
 
  *    Photo zoom
  *    Variables and functions
- *    Author: 
- *    Date:   
+ *    Author: Nicholas Le
+      Date: 08/07/19   
 
  *    Filename: zoom.js
  */
