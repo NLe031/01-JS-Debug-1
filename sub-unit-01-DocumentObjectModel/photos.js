@@ -67,6 +67,13 @@ function createEventListeners() {
   } else if (mainFig.attachEvent) {
       mainFig.attachEvent("onclick", zoomFig);
   }
+
+    var showAllButton = document.querySelector("#fiveButton p");
+    if (showAllButton.addEventListener) {
+        showAllButton.addEventListener("click", previewFive, false);
+    } else if (showAllButton.attachEvent) {
+        showAllButton.attachEvent("onclick", previewFive);
+    }
    
 }
 
