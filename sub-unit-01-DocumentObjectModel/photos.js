@@ -13,9 +13,28 @@
 /* global variables */
 var photoOrder = [1,2,3,4,5];
 
+/* add src values to img elements */
+function populateFigures() {
+   var filename;
+   var currentFig;
+   if (figureCount === 3) {
+       for (var i = 1; i < 4; i++) {
+           filename = "images/IMG_0" + photoOrder[i] + "sm.jpg";
+           currentFig = document.getElementsByTagName("img")[i - 1];
+           currentFig.src = filename;
+       }
+   }
+   else {
+       for (var i = 0; i < 5; i++) {
+           filename = "images/IMG_0" + photoOrder[i] + "sm.jpg";
+           currentFig = document.getElementsByTagName("img")[i];
+           currentFig.src = filename;
+       }
+   }
+}
+
 /* shift all images one figure to the left, and change values in photoOrder array to match  */
 function rightArrow() {
-   alert("right arrow clicked");
    for (var i = 0; i < 5; i++) {
       if ((photoOrder[i] + 1) === 6) {
          photoOrder[i] = 1;
@@ -28,7 +47,6 @@ function rightArrow() {
 
 /* shift all images one figure to the right, and change values in photoOrder array to match  */
 function leftArrow() {
-   alert("left arrow clicked");
    for (var i = 0; i < 5; i++) {
       if ((photoOrder[i] - 1) === 0) {
          photoOrder[i] = 5;
@@ -38,6 +56,27 @@ function leftArrow() {
       populateFigures();
    }
 }
+
+function previewFive(){
+  var lastFigure = document.createElement("figure");
+  lastFigure.id = "fig5";
+  lastFigure.style.zIndex = "5";
+   lastFigure.style.position = "absolute";
+   lastFigure.style.right = "45px";
+   lastFigure.style.top = "67px";
+   var lastImage = document.createElement("img");
+   lastImage.width = "240";
+    lastImage.height = "135";
+    var articleElem = document.getElementsByTagName("article")[0];
+    lastFigure.appendChild(lastImage);
+    articleElem.insertBefore(lastFigure, document.getElementById("rightarrow"));
+    var firstFigure = lastFigure.cloneNode(true);
+    firstFigure.id = "fig1";
+    firstFigure.style.right = "";
+    firstFigure.style.left = "45px";
+}
+
+ 
 
 /* open center figure in separate window */
 function zoomFig() {
